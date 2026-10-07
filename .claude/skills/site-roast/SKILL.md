@@ -22,6 +22,7 @@ If `skills.lock.json` has `synced` dates older than 14 days, run `npm run sync` 
 
 ```bash
 npm run capture -- <url> --max=15    # crawl + scan in one step; add --all to include login/app pages
+                                     # add --lighthouse for real perf/a11y numbers (~40 s per page)
 # or step by step: npm run crawl -- <url> ... then npm run scan
 ```
 
@@ -45,12 +46,12 @@ Read the skill's SKILL.md (and the reference files it points to) before applying
 | Lens key | What it asks | Skills to apply |
 |---|---|---|
 | `aiCopy` | Does the copy read like default LLM output? | `scan.json.writing` (deterministic), `avoid-ai-writing`, `humanizer` |
-| `aiDesign` | Does the UI look like the default AI-generated website? | `scan.json.design` (code tells), `avoid-ai-design` catalogue, `hallmark` gates, `frontend-design` clusters |
-| `visual` | Taste and craft: hierarchy, type, spacing, colour, imagery, mobile | `impeccable` (audit / critique mode) |
+| `aiDesign` | Does the UI look like the default AI-generated website? | `scan.json.design` (code tells), `avoid-ai-design` catalogue, `redesign-existing-projects` audit list, `hallmark` gates, `frontend-design` clusters |
+| `visual` | Taste and craft: hierarchy, type, spacing, colour, imagery, mobile | `design-taste-frontend` (Taste Skill: the bar to judge against), `impeccable` (audit / critique mode) |
 | `readability` | Can a skimmer get it in 5 seconds? Jargon, density, rhythm | `scan.json.readability`, `copy-editing` |
 | `pitch` | Is the value proposition clear, specific, credible, and aimed at the right buyer? | `product-marketing`, `copywriting`, `marketing-psychology` |
 | `conversion` | Is the next step obvious, trusted, low-friction? | `cro` |
-| `technical` | Titles, meta, headings, alt text, console errors, mobile overflow, load time, LLM legibility | `meta.json`, `seo-audit`, `ai-seo`, `web-design-guidelines` |
+| `technical` | Titles, meta, headings, alt text, a11y, speed, security headers, crawler/LLM access | `meta.json`, `scan.json.htmlQuality`, `scan.json.lighthouse` (if run), `web-quality-audit`, `accessibility`, `performance`, `core-web-vitals`, `pre-launch-audit`, `seo-audit`, `ai-seo`, `web-design-guidelines` |
 
 How to work:
 
@@ -59,6 +60,13 @@ How to work:
 - **Code tells need visual confirmation.** `scan.json.design` scans the *shipped* CSS bundle, which
   carries rules for the whole site. Only report a code tell as `certain` if you can see it on the
   page; otherwise drop it or mark it `hunch`.
+- **Taste skills are written for building, not judging.** `design-taste-frontend` and
+  `redesign-existing-projects` tell an agent how to *make* a page. Turn their rules into checks
+  ("does the page do X?") and their fixes into the `fix` field. Don't rewrite the client's site.
+- **Lighthouse numbers are lab numbers.** They use simulated mobile throttling on whatever machine ran
+  them, so heavy WebGL/3D pages look far worse than real users see. Quote the score, say it's a lab run,
+  and weight it by how far off budget it is (`core-web-vitals` has the thresholds). Never make a roast
+  out of a single noisy metric.
 - **Deterministic copy hits are candidates.** Apply the context exceptions in `avoid-ai-writing`
   (marketing register, quoted testimonials, legal text) before reporting them.
 - **Never claim authorship.** Say "reads as default AI copy", never "this was written by AI".

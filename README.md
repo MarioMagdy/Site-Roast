@@ -28,6 +28,7 @@ The `site-roast` skill runs the whole pipeline. Manually:
 ```bash
 npm install
 npm run capture -- https://example.com --max=15   # crawl + screenshots + deterministic scan -> runs/<host>-<date>/
+                                                  # add --lighthouse for perf/a11y scores (~40 s per page)
 # ... agent reviews pages with the skills, writes runs/<id>/roast.json ...
 npm run report                                    # -> runs/<id>/report.pdf
 ```
@@ -41,8 +42,11 @@ npm run report                                    # -> runs/<id>/report.pdf
 | AI design | avoid-ai-design | [funboy322/avoid-ai-design](https://github.com/funboy322/avoid-ai-design) (MIT) |
 | AI design | hallmark | [nutlope/hallmark](https://github.com/nutlope/hallmark) (MIT) |
 | AI design | frontend-design | [anthropics/skills](https://github.com/anthropics/skills) (Apache-2.0) |
+| AI design / visual | design-taste-frontend (Taste Skill), redesign-existing-projects | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) (MIT) |
 | Visual | impeccable | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0) |
 | Technical | web-design-guidelines | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) (MIT) |
+| Technical | web-quality-audit, accessibility, performance, core-web-vitals | [addyosmani/web-quality-skills](https://github.com/addyosmani/web-quality-skills) (MIT) |
+| Technical | pre-launch-audit | [bzsasson/pre-launch-audit-skill](https://github.com/bzsasson/pre-launch-audit-skill) (MIT) |
 | Pitch / CRO / readability / SEO | product-marketing, cro, copywriting, copy-editing, marketing-psychology, seo-audit, ai-seo | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) (MIT) |
 
 Exact commits are in `skills.lock.json`. Each vendored folder keeps its licence and an `UPSTREAM.md`.
@@ -58,4 +62,6 @@ Exact commits are in `skills.lock.json`. Each vendored folder keeps its licence 
 
 - A "tell" means the page uses a default that generative tools overproduce. The report never claims a site *was* AI-made.
 - The design scanner reads the shipped CSS bundle, which includes rules for the whole site, so the skill only reports code tells it can also see in the screenshots.
+- Not included: [website-audit-skill](https://github.com/appariciojunior/website-audit-skill) is a close fit, but it has no licence, so it can't be vendored. Add it if the author licenses it.
+- Lighthouse is an optional dependency. Its numbers are lab runs (simulated mobile throttling), so treat them as directional.
 - Requires Node 18+ and Playwright's Chromium (`npx playwright install chromium`, or set `CHROME_PATH`).

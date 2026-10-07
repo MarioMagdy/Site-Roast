@@ -10,7 +10,7 @@ Score each lens 0-10 per page, then per site. Use the anchors. Don't default to 
 | `readability` | 15 | 5-second test passes; scannable headings; Flesch ≳ 60 for consumer, ≳ 40 for technical B2B | Walls of text in places; some jargon | Can't tell what it is after reading the hero; dense jargon throughout |
 | `pitch` | 25 | Names who it's for and the outcome they get; differentiator is specific and credible; proof matches claims | Describes features, not outcomes; differentiation vague | Buzzword salad; the product category itself is unclear |
 | `conversion` | 15 | One primary CTA per view, specific label, visible pricing/next step, trust signals near the ask | CTA present but generic ("Get started") or competing CTAs | No clear next step, or a dead/broken CTA |
-| `technical` | 5 | Unique title + meta, one H1, alt text, no console errors, no mobile overflow, < 3 s load | A few gaps | Broken pages, missing titles, horizontal scroll on mobile |
+| `technical` | 5 | Unique title + meta, one H1, alt text, no console errors, no mobile overflow, LCP ≤ 2.5 s / Lighthouse a11y ≥ 90 | A few gaps | Broken pages, missing titles, horizontal scroll on mobile |
 
 `overallScore = round(Σ(score × weight) / 10)`, giving 0-100.
 

@@ -32,3 +32,9 @@ test("readability ignores nav fragments", () => {
   assert.equal(readability("Home\nPricing\nLogin"), null);
   assert.ok(readability("This is a simple sentence that people can read easily. Here is another one for luck.").fleschReadingEase > 50);
 });
+
+test("optional detectors only run when opted in", async () => {
+  const { DETECTORS } = await import("../lib/scan/detectors.mjs");
+  assert.deepEqual(DETECTORS.filter((d) => d.optIn).map((d) => d.optIn), ["lighthouse"]);
+  for (const d of DETECTORS) assert.equal(typeof d.summarize(null), "object");
+});

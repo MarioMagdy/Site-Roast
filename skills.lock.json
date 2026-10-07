@@ -103,5 +103,54 @@
     "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
     "license": "MIT",
     "synced": "2026-10-07"
+  },
+  "design-taste-frontend": {
+    "repo": "Leonxlnx/taste-skill",
+    "path": "skills/taste-skill",
+    "sha": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "redesign-existing-projects": {
+    "repo": "Leonxlnx/taste-skill",
+    "path": "skills/redesign-skill",
+    "sha": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "web-quality-audit": {
+    "repo": "addyosmani/web-quality-skills",
+    "path": "skills/web-quality-audit",
+    "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "accessibility": {
+    "repo": "addyosmani/web-quality-skills",
+    "path": "skills/accessibility",
+    "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "performance": {
+    "repo": "addyosmani/web-quality-skills",
+    "path": "skills/performance",
+    "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "core-web-vitals": {
+    "repo": "addyosmani/web-quality-skills",
+    "path": "skills/core-web-vitals",
+    "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "pre-launch-audit": {
+    "repo": "bzsasson/pre-launch-audit-skill",
+    "path": "skills/pre-launch-audit",
+    "sha": "f9ccf065c42214ae796edd480ac82c30cd605c53",
+    "license": "MIT",
+    "synced": "2026-10-07"
   }
 }

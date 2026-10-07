@@ -24,7 +24,11 @@
       "repo": "blader/humanizer",
       "ref": "HEAD",
       "path": ".",
-      "include": ["SKILL.md", "LICENSE", "README.md"],
+      "include": [
+        "SKILL.md",
+        "LICENSE",
+        "README.md"
+      ],
       "license": "MIT",
       "lens": "ai-copy",
       "why": "Wikipedia 'Signs of AI writing' catalogue - model-judged second opinion on copy tells."
@@ -34,7 +38,12 @@
       "repo": "funboy322/avoid-ai-design",
       "ref": "HEAD",
       "path": ".",
-      "include": ["SKILL.md", "LICENSE", "references", "scripts"],
+      "include": [
+        "SKILL.md",
+        "LICENSE",
+        "references",
+        "scripts"
+      ],
       "license": "MIT",
       "lens": "ai-design",
       "why": "AI design-tells catalogue (1st + 2nd order) and zero-dep scanner scripts/detect.mjs for code-certain tells."
@@ -137,6 +146,69 @@
       "license": "MIT",
       "lens": "technical",
       "why": "Is the site legible to LLM answer engines (citability, structure, llms.txt)?"
+    },
+    {
+      "name": "design-taste-frontend",
+      "repo": "Leonxlnx/taste-skill",
+      "ref": "HEAD",
+      "path": "skills/taste-skill",
+      "license": "MIT",
+      "lens": "visual",
+      "why": "Taste Skill: anti-slop design standards (variance/motion/density dials, pre-flight checklist). Used as the taste bar for the visual lens."
+    },
+    {
+      "name": "redesign-existing-projects",
+      "repo": "Leonxlnx/taste-skill",
+      "ref": "HEAD",
+      "path": "skills/redesign-skill",
+      "license": "MIT",
+      "lens": "ai-design",
+      "why": "Taste Skill's audit checklist for existing sites: generic AI patterns in type, colour, layout, states. Maps 1:1 to roast findings."
+    },
+    {
+      "name": "web-quality-audit",
+      "repo": "addyosmani/web-quality-skills",
+      "ref": "HEAD",
+      "path": "skills/web-quality-audit",
+      "license": "MIT",
+      "lens": "technical",
+      "why": "Evidence-led Lighthouse-style audit (perf, a11y, SEO, best practices, agentic browsing); ships scripts/analyze.sh HTML checker."
+    },
+    {
+      "name": "accessibility",
+      "repo": "addyosmani/web-quality-skills",
+      "ref": "HEAD",
+      "path": "skills/accessibility",
+      "license": "MIT",
+      "lens": "technical",
+      "why": "WCAG 2.2 checks: contrast, keyboard, landmarks, alt text, forms."
+    },
+    {
+      "name": "performance",
+      "repo": "addyosmani/web-quality-skills",
+      "ref": "HEAD",
+      "path": "skills/performance",
+      "license": "MIT",
+      "lens": "technical",
+      "why": "Load-time budget and the usual culprits (hero media, render-blocking, fonts)."
+    },
+    {
+      "name": "core-web-vitals",
+      "repo": "addyosmani/web-quality-skills",
+      "ref": "HEAD",
+      "path": "skills/core-web-vitals",
+      "license": "MIT",
+      "lens": "technical",
+      "why": "How to read LCP / CLS / INP numbers from the Lighthouse detector."
+    },
+    {
+      "name": "pre-launch-audit",
+      "repo": "bzsasson/pre-launch-audit-skill",
+      "ref": "HEAD",
+      "path": "skills/pre-launch-audit",
+      "license": "MIT",
+      "lens": "technical",
+      "why": "Technical SEO, AI-crawler access (robots/llms.txt), security headers, stack detection. Its 'interpret, don't enumerate' rules match the roast voice."
     }
   ]
 }
