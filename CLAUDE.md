@@ -9,19 +9,29 @@ a website link and asks for a roast, review, audit, or teardown, follow that ski
 ## Layout
 
 ```
-.claude/skills/site-roast/     first-party orchestrator skill + rubric + roast.json schema
+.claude/skills/site-roast/     first-party orchestrator skill
+  references/                  rubric.md, roast-schema.md (v2 data contract), report-format.md (fixed outline)
 .claude/skills/<other>/        VENDORED upstream skills - never edit; see UPSTREAM.md in each
 skills.manifest.json           which upstream skills we reuse, from where, and for which lens
 skills.lock.json               exact upstream commit per vendored skill (written by sync)
 lib/
   paths.mjs, browser.mjs       shared helpers
-  crawl/                       urls.mjs (normalise/filter/slug), capture.mjs (one page), crawler.mjs (BFS)
-  scan/                        detectors.mjs (adapters for vendored scanners), readability.mjs, scanner.mjs
-  report/                      lenses.mjs (lens keys/weights/validation), template.mjs (HTML), pdf.mjs
+  crawl/
+    urls.mjs, crawler.mjs      URL rules, BFS crawl (then site checks)
+    capture.mjs                one page: 4 breakpoints, scroll, screenshots, all probes
+    probes/                    in-page probes (page-info, theme, motion, responsive, bugs) + network/secrets
+    site/                      site-level: extras (filmstrip, reduced motion, dark mode), security, files, links, profile
+  scan/                        detectors.mjs (vendored scanners + Lighthouse), readability.mjs, scanner.mjs
+  annotate/                    overlay.mjs (in-page markers), annotate.mjs (resolve targets, crop)
+  report/
+    schema.mjs                 criteria, categories, severities, SECTIONS (fixed outline)  <- single source of truth
+    normalize.mjs              v1->v2 upgrade, numbering, validation
+    context.mjs, components.mjs, template.mjs, pdf.mjs
+    sections/                  one renderer per section group
   skills/sync.mjs              vendoring logic
-scripts/                       thin CLIs: capture, crawl, scan, report, sync
+scripts/                       thin CLIs: capture, crawl, scan, annotate, report, sync
 test/                          node:test unit tests (npm test)
-examples/                      sample outputs (roast.json + report.pdf)
+examples/                      sample outputs
 runs/                          per-roast working folders (gitignored)
 ```
 
@@ -32,7 +42,12 @@ runs/                          per-roast working folders (gitignored)
 - **Never edit vendored skill folders.** Change the manifest (`ref`, `path`, `include`) and re-sync.
   Only add MIT/Apache/BSD-licensed skills, and record the licence in the manifest.
 - **New deterministic scanner?** Add an adapter object to `DETECTORS` in `lib/scan/detectors.mjs`.
-- **New lens?** Add it to `LENSES` in `lib/report/lenses.mjs`, the rubric, and the SKILL.md lens table.
+- **New criterion or section?** Add it to `CRITERIA` / `SECTIONS` in `lib/report/schema.mjs`, a renderer in
+  `lib/report/sections/`, and mirror it in `rubric.md`, `roast-schema.md` and `report-format.md`.
+- **New evidence?** Add an in-page probe under `lib/crawl/probes/` (self-contained function, run via
+  `evaluate()`), or a site-level check under `lib/crawl/site/`, and surface it in the matching section.
+- **Security checks stay passive.** Only what a normal visitor's browser receives: no hidden-file
+  probing, no form submissions, no logins, no fuzzing.
 - **Every finding needs evidence.** The report validator rejects findings without it.
 - **No authorship claims.** "Reads as default AI output", never "AI wrote this".
 - Run `npm test` before pushing.

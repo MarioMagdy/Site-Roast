@@ -1,94 +1,123 @@
 ---
 name: site-roast
-description: Roast a website from a URL - crawl every page, flag AI-generated giveaways in copy and design, judge visual taste, readability, and whether the site actually pitches its product, then deliver a per-page PDF report. Use when the user gives a website link and asks to roast, audit, review, critique, tear down, or "check for AI slop". Orchestrates the vendored skills in .claude/skills/ rather than re-implementing them.
-argument-hint: "<url> [--max=15] [--all]"
+description: Roast a website from a URL - crawl every page, flag AI-generated giveaways in copy and design, judge it like a design director (taste, typography, colour/theme, layout, imagery, motion, responsiveness) plus pitch, conversion, accessibility, performance, security and backend, and deliver a PDF with annotated screenshots in a fixed report format. Use when the user gives a website link and asks to roast, audit, review, critique, judge, tear down, or "check for AI slop". Orchestrates the vendored skills in .claude/skills/ rather than re-implementing them.
+argument-hint: "<url> [--max=15] [--all] [--lighthouse]"
 ---
 
 # Site Roast
 
-You are the orchestrator. The judgement lives in the vendored skills next to this one
-(listed in `skills.manifest.json`, pinned in `skills.lock.json`). Your job is to feed
-them the right evidence, keep findings honest, and assemble one report.
+You are the orchestrator and the design director. The specialist judgement lives in the vendored
+skills next to this one (`skills.manifest.json`, pinned in `skills.lock.json`). Your job: feed them
+evidence, keep findings honest, point at the problems on the screenshots, and fill the fixed report.
 
 **Voice:** a sharp, funny, fair senior reviewer. Roast the page, never the person.
-Every jab needs evidence (a quote, a screenshot detail, a number). No evidence, no finding.
+Every jab needs evidence (a quote, a number, a visible detail). No evidence, no finding.
+
+**The output is always the same shape**: see `references/report-format.md`. Sixteen sections in a
+fixed order; a section that doesn't apply is listed as "not applicable" with a reason, never silently
+dropped. The data contract is `references/roast-schema.md` (enforced by `lib/report/normalize.mjs`).
 
 ## 0. Freshness
 
-If `skills.lock.json` has `synced` dates older than 14 days, run `npm run sync` first
-(network permitting) and mention any skills that changed. If `node_modules/` is missing, `npm install`.
+If `skills.lock.json` `synced` dates are older than 14 days, run `npm run sync` first and mention
+skills that changed. If `node_modules/` is missing, `npm install`.
 
 ## 1. Capture (deterministic)
 
 ```bash
-npm run capture -- <url> --max=15    # crawl + scan in one step; add --all to include login/app pages
-                                     # add --lighthouse for real perf/a11y numbers (~40 s per page)
-# or step by step: npm run crawl -- <url> ... then npm run scan
+npm run capture -- <url> --max=15 --lighthouse   # ~1 min/page with Lighthouse; drop it for a fast pass
 ```
 
-Output: `runs/<host>-<date>/` with `site.json`, `scan-summary.json`, and per page
-`pages/<slug>/{fold-desktop,fold-mobile,desktop,mobile}.png, text.md, meta.json, scan.json, css/`.
+This writes `runs/<host>-<date>/`:
+
+| File | What's in it | Feeds |
+|---|---|---|
+| `site/profile.json` | stack, hosting, languages, forms, pricing shown, dark mode, motion level, backends, analytics | summary, which sections apply |
+| `site/checks.json` | filmstrips, reduced-motion test, dark-mode test, security headers, cookies, secrets scan, third parties, backends, endpoints, forms, robots/sitemap/llms.txt, soft-404, link check | motion, themes, security, seo, bugs |
+| `pages/<slug>/fold-{mobile,tablet,laptop,desktop}.png`, `desktop.png`, `mobile.png`, `film/` | screenshots at 4 breakpoints, full pages, load filmstrip | everything visual |
+| `pages/<slug>/meta.json` | title, meta, headings, CTAs, links, lang/dir, headers | content, seo |
+| `pages/<slug>/theme.json` | measured palette, fonts, type scale, radii, shadows, gradients, tokens | design, themes |
+| `pages/<slug>/motion.json` | animations, loops, transitions, scroll reveals, libraries, autoplay video | motion |
+| `pages/<slug>/responsive.json` | overflow (+ culprit selectors), small tap targets, min font size per breakpoint | responsive, a11y |
+| `pages/<slug>/bugs.json` | JS errors, console errors, broken images, dead anchors, duplicate IDs, unnamed controls, forms | bugs, a11y |
+| `pages/<slug>/network.json` | requests, failures, secrets, hosts referenced in code | security, backend, perf |
+| `pages/<slug>/scan.json` | AI-writing + AI-design scanners, readability, HTML checks, Lighthouse | content, design, a11y, perf |
+
 If the site blocks the crawler or renders nothing, stop and tell the user. Don't roast a captcha.
 
 ## 2. Understand the business first
 
-Before judging anything, read `.claude/skills/product-marketing/SKILL.md` and use the homepage,
-pricing, and about pages to write down: **what it sells, to whom, the main promise, the price
-point, and the main competitor category**. Every pitch, conversion, and taste call is judged
-against this, so a playful brand isn't punished for being playful.
+Read `.claude/skills/product-marketing/SKILL.md`, `site/profile.json`, and the homepage, pricing and
+about pages. Write down **what it sells, to whom, the main promise, the price point, and the
+competitor category**. Every taste, pitch and conversion call is judged against this. A playful
+brand isn't punished for being playful; an enterprise tool is judged by enterprise expectations.
 
-## 3. Review every page through the lenses
+## 3. Review in five passes
 
-Full rubric with scoring anchors: `references/rubric.md` (lens keys and weights are defined in code in
-`lib/report/lenses.mjs`; keep the two in sync). Each lens names the skill(s) to load.
-Read the skill's SKILL.md (and the reference files it points to) before applying it.
+Criteria, weights and scoring anchors: `references/rubric.md`. Read a skill's SKILL.md (and the
+reference files it points to) before applying it.
 
-| Lens key | What it asks | Skills to apply |
-|---|---|---|
-| `aiCopy` | Does the copy read like default LLM output? | `scan.json.writing` (deterministic), `avoid-ai-writing`, `humanizer` |
-| `aiDesign` | Does the UI look like the default AI-generated website? | `scan.json.design` (code tells), `avoid-ai-design` catalogue, `redesign-existing-projects` audit list, `hallmark` gates, `frontend-design` clusters |
-| `visual` | Taste and craft: hierarchy, type, spacing, colour, imagery, mobile | `design-taste-frontend` (Taste Skill: the bar to judge against), `impeccable` (audit / critique mode) |
-| `readability` | Can a skimmer get it in 5 seconds? Jargon, density, rhythm | `scan.json.readability`, `copy-editing` |
-| `pitch` | Is the value proposition clear, specific, credible, and aimed at the right buyer? | `product-marketing`, `copywriting`, `marketing-psychology` |
-| `conversion` | Is the next step obvious, trusted, low-friction? | `cro` |
-| `technical` | Titles, meta, headings, alt text, a11y, speed, security headers, crawler/LLM access | `meta.json`, `scan.json.htmlQuality`, `scan.json.lighthouse` (if run), `web-quality-audit`, `accessibility`, `performance`, `core-web-vitals`, `pre-launch-audit`, `seo-audit`, `ai-seo`, `web-design-guidelines` |
+**A. Designer's judgment** (fills `design.*`, design criteria scores, design findings). Look at every
+`fold-*.png`, the full `desktop.png` of the homepage, the breakpoint strip and the filmstrip. Judge as
+a design director would: first impression in 5 seconds, art direction, typography, colour & theme,
+layout & composition, imagery, motion, consistency across pages, and brand fit for the buyer and price.
+Skills: `design-taste-frontend` (the bar), `impeccable` (critique/audit), `redesign-existing-projects`
+(audit checklist), `avoid-ai-design` + `hallmark` + `frontend-design` (AI-default clusters).
+Use `theme.json` to back colour/type claims with measured values.
 
-How to work:
+**B. Content, pitch & conversion** (fills `content.*`, criteria pitch/conversion/readability/aiCopy).
+Skills: `product-marketing`, `copywriting`, `marketing-psychology`, `cro`, `copy-editing`,
+`avoid-ai-writing`, `humanizer`; deterministic copy hits in `scan.json.writing` are candidates only.
 
-- **Look at the screenshots.** Read `fold-desktop.png` and `fold-mobile.png` for every page and
-  `desktop.png` for the homepage at least. Design and taste calls come from pixels, not CSS.
-- **Code tells need visual confirmation.** `scan.json.design` scans the *shipped* CSS bundle, which
-  carries rules for the whole site. Only report a code tell as `certain` if you can see it on the
-  page; otherwise drop it or mark it `hunch`.
-- **Taste skills are written for building, not judging.** `design-taste-frontend` and
-  `redesign-existing-projects` tell an agent how to *make* a page. Turn their rules into checks
-  ("does the page do X?") and their fixes into the `fix` field. Don't rewrite the client's site.
-- **Lighthouse numbers are lab numbers.** They use simulated mobile throttling on whatever machine ran
-  them, so heavy WebGL/3D pages look far worse than real users see. Quote the score, say it's a lab run,
-  and weight it by how far off budget it is (`core-web-vitals` has the thresholds). Never make a roast
-  out of a single noisy metric.
-- **Deterministic copy hits are candidates.** Apply the context exceptions in `avoid-ai-writing`
-  (marketing register, quoted testimonials, legal text) before reporting them.
-- **Never claim authorship.** Say "reads as default AI copy", never "this was written by AI".
-- **Fan out on big sites.** With more than ~5 pages, give each page (or group of similar pages) to a
-  subagent with: the business summary from step 2, the page folder path, the lens table, and the
-  finding schema. Do the homepage yourself. Check that subagent findings quote real evidence before merging.
-- **Site-wide issues once.** Something on every page (nav, footer, font choice) goes on the first page
-  where it appears, plus the site summary. Don't repeat it on every page.
+**C. Page by page.** Every page gets a one-line verdict and its own findings. More than ~5 pages: give
+each page (or group of near-identical pages, e.g. language mirrors) to a subagent with the business
+summary, the page folder, the rubric and the finding schema. Do the homepage yourself. Check every
+subagent finding quotes real evidence before merging.
+
+**D. Technical sections** (one `sections.<id>.summary` each, 2-4 sentences: the verdict and how it
+affects visitors, brand and conversion):
+- `motion`: `motion.json`, filmstrip, reduced-motion test. No motion is a finding only if the site
+  needs feedback or life it doesn't have. Purposeless loops, slow entrances (>600 ms), motion that
+  hides content until scroll, or ignoring reduced-motion are findings.
+- `themes`: palette roles, contrast, dark mode, how the theme affects readability, brand perception
+  and conversion. Use `theme.json` + the dark-mode check.
+- `responsive`: breakpoint folds, overflow culprits, tap targets, tablet layouts (often the weakest).
+- `accessibility`, `performance`: Lighthouse (lab numbers: say so; never roast on one noisy metric),
+  `accessibility`, `performance`, `core-web-vitals`, `web-quality-audit` skills.
+- `security`: headers, HTTPS, cookies, secrets, third parties, backends/endpoints, forms
+  (`pre-launch-audit`, `web-quality-audit`). **Passive only:** never probe for hidden files, submit
+  forms, try logins, or fuzz. A `service_role`/secret key in client code is always a Roast.
+- `seo`: `seo-audit`, `ai-seo`, site files, soft-404, broken links.
+- `i18n` (only if more than one language or RTL): parity between versions, untranslated strings, CTAs.
+
+**E. Bugs.** Walk the automated detections (`bugs.json`, `network.json`, `site/checks.json` links)
+and confirm the real ones as findings with `"type": "bug"`. A bug is something *broken* (error, dead
+link, form that loses data, overflow that hides content); a quality problem is an `issue`.
+
+Rules for every finding:
+- **Point at it.** If it's visible, add `targets` so the report circles it: prefer `text` (exact
+  visible copy) or a `selector` taken from the evidence files (`responsive.json`, `bugs.json` and
+  `motion.json` contain ready-made selectors). Use `viewport: "mobile"` for mobile issues, `click`
+  to open a modal/menu first, `shape: "circle"` for small things, `note` for a 2-4 word label.
+- **Code tells need visual confirmation.** The design scanner reads the whole CSS bundle. Only report
+  a code tell as `certain` if you can see it on the page.
+- **Never claim authorship.** "Reads as default AI output", never "AI made this".
+- **Site-wide issues once** (`page: null`, with a `targets[].page` for the marker), not on every page.
 
 ## 4. Write `runs/<id>/roast.json`
 
-Schema and an example: `references/roast-schema.md`. Scores are 0-10 per lens using the rubric
-anchors. `overallScore` (0-100) is the weighted mean from the rubric. Give 3-5 `topFixes` sorted by
-impact and 2-4 honest `strengths`, because a roast with no credit reads as spite.
+Schema with a full example: `references/roast-schema.md`. Score every criterion you assessed (0-10,
+rubric anchors). 3-5 `topFixes` sorted by impact and 2-4 honest `strengths`, because a roast with no
+credit reads as spite. Mark a section `not-applicable` only with a reason.
 
 ## 5. Build the report
 
 ```bash
-npm run report        # validates roast.json, then -> runs/<id>/report.html + report.pdf
+npm run report        # validate -> annotate screenshots -> runs/<id>/report.html + report.pdf
 ```
 
-If validation fails (unknown lens, finding without evidence), fix `roast.json` and re-run. Don't loosen the validator.
+- Validation fails → fix `roast.json`. Don't loosen the validator.
+- "marker(s) couldn't be placed" → fix that target's `text`/`selector` (or give a `box`) and re-run.
+- Render a few PDF pages to PNG and look at them: markers on the right elements, nothing cut off.
 
-Open the PDF (or render one page to PNG) and check that it looks right. Then give the user the PDF path, the
-overall score, and the top 3 fixes in chat.
+Then give the user the PDF path, the overall score, and the top 3 fixes in chat.

@@ -1,6 +1,10 @@
 # Site Roast
 
-An agent workflow that takes a website URL and returns a **per-page PDF roast**:
+An agent workflow that takes a website URL and returns a **PDF roast with annotated screenshots**
+(numbered markers circling each problem) in a **fixed 16-section format**: scorecard, executive summary,
+designer's judgment, content & pitch, bugs, issue register, page-by-page, motion, themes & colour,
+responsiveness, accessibility, performance, security & backend, SEO, localisation, method.
+See [`report-format.md`](.claude/skills/site-roast/references/report-format.md). It covers:
 
 - **AI copy tells**: stock LLM phrasing, triads, "not just X, it's Y", chatbot leftovers
 - **AI design tells**: purple-gradient heroes, Inter + three icon cards, glassmorphism, the "tasteful AI" second-order defaults
@@ -8,7 +12,10 @@ An agent workflow that takes a website URL and returns a **per-page PDF roast**:
 - **Readability**: 5-second test, jargon, density, sentence rhythm
 - **Pitch & positioning**: does it say who it's for, what they get, and why this over the alternative?
 - **Conversion & trust**: CTA clarity, proof near claims, friction
-- **Technical hygiene**: titles/meta, headings, alt text, load time, mobile overflow, LLM legibility
+- **Design judgment**: art direction, typography, colour & theme (incl. dark mode), layout, imagery, motion, consistency, brand fit
+- **Responsiveness** at 390 / 768 / 1024 / 1440, **accessibility**, **performance** (Lighthouse)
+- **Security & backend** (passive): headers, cookies, secrets in client code, third parties, backends, forms
+- **SEO & discoverability**, **bugs** (JS errors, broken links/images, dead anchors) and **localisation**
 
 It doesn't reinvent the judging. It **orchestrates existing open-source agent skills** (vendored and
 pinned, updated weekly) and adds a crawler, deterministic scanners, a scoring rubric, and a PDF builder.
@@ -27,10 +34,9 @@ The `site-roast` skill runs the whole pipeline. Manually:
 
 ```bash
 npm install
-npm run capture -- https://example.com --max=15   # crawl + screenshots + deterministic scan -> runs/<host>-<date>/
-                                                  # add --lighthouse for perf/a11y scores (~40 s per page)
-# ... agent reviews pages with the skills, writes runs/<id>/roast.json ...
-npm run report                                    # -> runs/<id>/report.pdf
+npm run capture -- https://example.com --max=15 --lighthouse   # evidence -> runs/<host>-<date>/
+# ... agent reviews with the skills, writes runs/<id>/roast.json (schema v2) ...
+npm run report      # validate -> annotate screenshots -> runs/<id>/report.pdf
 ```
 
 ## Skills it reuses

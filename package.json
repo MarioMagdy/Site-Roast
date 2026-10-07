@@ -6,6 +6,7 @@
     "capture": "node scripts/capture.mjs",
     "crawl": "node scripts/crawl.mjs",
     "scan": "node scripts/scan.mjs",
+    "annotate": "node scripts/annotate.mjs",
     "report": "node scripts/report.mjs",
     "sync": "node scripts/sync.mjs",
     "test": "node --test test/*.test.mjs"
