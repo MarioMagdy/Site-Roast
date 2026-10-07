@@ -38,3 +38,8 @@ test("optional detectors only run when opted in", async () => {
   assert.deepEqual(DETECTORS.filter((d) => d.optIn).map((d) => d.optIn), ["lighthouse"]);
   for (const d of DETECTORS) assert.equal(typeof d.summarize(null), "object");
 });
+
+test("readability skips non-Latin copy instead of scoring it", () => {
+  const r = readability("ابنِ ثقة حقيقية في التحدث بالإنجليزية. تعلّم كيف تعبّر عن أفكارك بوضوح وبلا تردد في اجتماعات العمل.");
+  assert.ok(r.skipped);
+});
