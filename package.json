@@ -1,7 +1,32 @@
 {
   "name": "site-roast",
+  "version": "0.2.0",
   "private": true,
-  "description": "Agent workflow that roasts a website page-by-page: AI-slop tells, design quality, readability, and whether it actually pitches the product.",
+  "description": "Agent workflow that roasts a website: AI-slop tells, design judgment, pitch, responsiveness, accessibility, performance and passive security, delivered as a PDF with annotated screenshots.",
+  "license": "MIT",
+  "author": "MarioMagdy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarioMagdy/Site-Roast.git"
+  },
+  "homepage": "https://github.com/MarioMagdy/Site-Roast#readme",
+  "bugs": {
+    "url": "https://github.com/MarioMagdy/Site-Roast/issues"
+  },
+  "keywords": [
+    "claude-code",
+    "agent-skills",
+    "website-audit",
+    "design-review",
+    "ai-slop",
+    "playwright",
+    "lighthouse",
+    "accessibility",
+    "cro"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "capture": "node scripts/capture.mjs",
     "crawl": "node scripts/crawl.mjs",
@@ -12,10 +37,7 @@
     "test": "node --test test/*.test.mjs"
   },
   "dependencies": {
-    "playwright": "^1.48.0"
-  },
-  "engines": {
-    "node": ">=18"
+    "playwright": "^1.51.0"
   },
   "optionalDependencies": {
     "lighthouse": "^13.5.0"

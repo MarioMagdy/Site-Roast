@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synthora - The Future of AI-Powered Workflows</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav><div class="container">
+    <a class="logo" href="index.html">Synth<span>ora</span></a>
+    <div class="links"><a href="#features">Features</a><a href="pricing.html">Pricing</a><a href="#features-overview">Docs</a><a href="#">Blog</a></div>
+    <a class="btn btn-primary" href="pricing.html">Get Started</a>
+  </div></nav>
+
+  <header class="hero"><div class="container">
+    <span class="badge">✨ Introducing Synthora 2.0 — now with AI agents</span>
+    <h1>Supercharge Your Workflow<br>with <span class="grad">AI-Powered</span> Automation</h1>
+    <p class="sub">Unlock the power of seamless automation. Synthora isn't just a tool — it's a game-changer that empowers teams to work smarter, not harder.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="pricing.html">Start Free Trial</a><a class="btn btn-ghost" href="#demo">Watch Demo</a></div>
+    <img class="shot" src="assets/dashboard.png">
+    <div class="logos"><span>ACME</span><span>GLOBEX</span><span>INITECH</span><span>UMBRELLA</span><span>HOOLI</span></div>
+  </div></header>
+
+  <section id="features"><div class="container">
+    <h2>Everything you need to <span class="grad">scale</span></h2>
+    <p class="section-sub">Powerful features designed to help you streamline, optimize and transform the way you work.</p>
+    <div class="grid3">
+      <div class="card reveal"><div class="icon">🚀</div><h3>Lightning Fast</h3><p>Experience blazing-fast performance that takes your productivity to the next level.</p></div>
+      <div class="card reveal"><div class="icon">⚡</div><h3>Seamless Integration</h3><p>Effortlessly connect with the tools you already love for a truly unified experience.</p></div>
+      <div class="card reveal"><div class="icon">🔒</div><h3>Enterprise-Grade Security</h3><p>Rest easy knowing your data is protected by industry-leading, bank-level security.</p></div>
+    </div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="stats reveal"><div><b>10x</b>Faster workflows</div><div><b>99.9%</b>Uptime</div><div><b>10,000+</b>Happy teams</div></div>
+  </div></section>
+
+  <section><div class="container">
+    <h2>Loved by teams everywhere</h2>
+    <p class="section-sub">Don't just take our word for it.</p>
+    <div class="grid3">
+      <div class="card reveal"><p class="quote">"Synthora completely transformed how our team works. It's a total game-changer!"</p><p class="who">John D., CEO</p></div>
+      <div class="card reveal"><p class="quote">"I can't imagine going back. The seamless experience is unmatched."</p><p class="who">Sarah K., Product Manager</p></div>
+      <div class="card reveal"><p class="quote">"Absolutely incredible. It's not just software — it's a revolution."</p><p class="who">Mike R., Founder</p></div>
+    </div>
+  </div></section>
+
+  <section><div class="container"><div class="final reveal">
+    <h2>Ready to transform your workflow?</h2>
+    <p class="section-sub">Join thousands of teams already using Synthora to unlock their full potential.</p>
+    <form class="newsletter" onsubmit="return false"><input type="email" placeholder="Enter your email"><button class="btn btn-primary" type="submit">Get Started</button></form>
+  </div></div></section>
+
+  <footer><div class="container cols">
+    <div><b>Synthora</b><p>Fictional demo site for Site Roast. Not a real product.</p></div>
+    <div><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a></div>
+    <div><a href="#">Privacy</a><a href="#">Terms</a><a href="https://example.com/status" target="_blank">Status</a></div>
+  </div></footer>
+  <script>
+    const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && e.target.classList.add("in")));
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    initAnalytics(); // leftover call: the function was never defined
+  </script>
+</body>
+</html>

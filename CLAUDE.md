@@ -1,7 +1,7 @@
 # Site Roast - agent notes
 
-Give it a URL, get back a per-page PDF roast: AI-slop giveaways in copy and design, visual taste,
-readability, and whether the site actually pitches its product.
+Give it a URL, get back a PDF roast with annotated screenshots in a fixed 16-section format: AI-slop
+giveaways, design judgment, pitch, responsiveness, accessibility, performance, passive security.
 
 **Entry point:** the `site-roast` skill (`.claude/skills/site-roast/SKILL.md`). When the user pastes
 a website link and asks for a roast, review, audit, or teardown, follow that skill.
@@ -31,7 +31,7 @@ lib/
   skills/sync.mjs              vendoring logic
 scripts/                       thin CLIs: capture, crawl, scan, annotate, report, sync
 test/                          node:test unit tests (npm test)
-examples/                      sample outputs
+examples/                      demo-site/ (fictional test target) + demo/ (its roast.json, PDF, crops)
 runs/                          per-roast working folders (gitignored)
 ```
 
@@ -50,4 +50,6 @@ runs/                          per-roast working folders (gitignored)
   probing, no form submissions, no logins, no fuzzing.
 - **Every finding needs evidence.** The report validator rejects findings without it.
 - **No authorship claims.** "Reads as default AI output", never "AI wrote this".
-- Run `npm test` before pushing.
+- Run `npm test` before pushing. Try changes against the demo site (`node examples/demo-site/serve.mjs`),
+  not someone else's live site.
+- This repo is public: never commit `runs/` output, client names, or roasts of real sites.

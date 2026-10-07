@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T20:30:00Z",
+  "site": {
+    "url": "http://localhost:4173",
+    "name": "Synthora (fictional demo)",
+    "product": "An 'AI-powered workflow automation' SaaS. Fictional: this site ships with Site Roast as a test target.",
+    "audience": "Unclear from the site itself, which is the first problem",
+    "verdict": "Synthora is the median AI landing page, rendered faithfully: a purple-to-pink glow behind a centred headline with one gradient word, a sparkle pill above it, three emoji cards, placeholder logos, an infinitely pulsing button, and copy that 'unlocks the power of seamless automation' without ever saying what gets automated, for whom, or what it costs to find out. Underneath the gloss, things are broken: the product screenshot is a 404, 'Watch Demo' and every footer link go nowhere, the pricing CTAs are href=\"#\", the page throws a JavaScript error on load, and the logo strip pushes the mobile layout 30px sideways.",
+    "topFixes": [
+      "Say what it does in the hero: the job it automates, for whom, and one concrete outcome. Replace 'Supercharge Your Workflow' with that sentence.",
+      "Fix the broken path to money: the pricing 'Get Started' buttons, 'Watch Demo' and the footer links all go nowhere, and the hero product image is a 404.",
+      "Drop the AI-default visual kit (purple/pink glow, gradient headline word, sparkle pill, emoji icons, glass cards, pulsing CTA) and show the actual product.",
+      "Replace placeholder proof (ACME/GLOBEX logos, 'John D., CEO', '10,000+ happy teams') with real customers, named, or remove it.",
+      "Fix mobile overflow (the 640px logo strip) and stop hiding content until scroll; respect prefers-reduced-motion."
+    ],
+    "strengths": [
+      "Fast and light: one stylesheet, one font family, no framework, Lighthouse performance 87-88.",
+      "Clear visual hierarchy in the hero: one headline, one subline, one primary button.",
+      "Pricing shows real numbers ($19 / $49) instead of 'contact us'."
+    ]
+  },
+  "scores": {
+    "visual": 3, "typography": 4, "color": 3, "layout": 3, "imagery": 1, "motion": 2, "responsive": 4, "aiDesign": 1,
+    "pitch": 2, "conversion": 2, "readability": 5, "aiCopy": 2,
+    "accessibility": 4, "performance": 8, "seo": 4
+  },
+  "design": {
+    "firstImpression": "You've seen this page before, many times. Dark navy, a purple-pink nebula, a centred headline with one word in a gradient, two pill buttons. In five seconds you know it's 'AI something for teams' and nothing else.",
+    "artDirection": "No direction of its own: it's the default output of 'make me a modern SaaS landing page'. Every surface is a glass card on a glow.",
+    "typography": "Inter at 99% of all text, mostly at 800 weight with negative tracking for headings. Competent and anonymous. The 11px footer in #6b7089 is unreadable.",
+    "color": "69% of the page is #0b0b1a near-black; the only colour is the indigo→violet→pink gradient (#6366f1 → #a855f7 → #ec4899), used on the logo, a headline word, every primary button and the glow. With 6 gradients on one page, no single action stands out.",
+    "layout": "The cookie-cutter order: hero, logo strip, three equal feature cards, stat strip, three testimonials, gradient CTA box, footer. Everything is centred.",
+    "imagery": "The only image is the hero product screenshot, and it's broken (404). Icons are emoji (🚀 ⚡ 🔒, ✨ bullets). The product is never shown.",
+    "motion": "Three infinitely pulsing glow animations on CTAs and 8 blocks that stay invisible until you scroll, each fading in over 1.2 s. None of it respects reduced motion (3 running animations either way).",
+    "consistency": "Consistent, in that both pages use the same kit. Pricing adds ⭐ and ✨ ornaments.",
+    "brandFit": "The site gives no buyer to fit. The look signals 'early AI startup', which is either accurate or a liability, depending on who's buying."
+  },
+  "content": {
+    "positioning": "No category, no buyer, no job-to-be-done. 'AI-powered workflows' could mean Zapier, a CRM, or a chatbot.",
+    "messaging": "Wall-to-wall stock phrasing: 'unlock the power', 'seamless', 'game-changer', 'isn't just a tool — it's', 'work smarter, not harder', 'take your productivity to the next level'.",
+    "proof": "Placeholder logos (ACME, GLOBEX, INITECH, UMBRELLA, HOOLI), anonymous testimonials ('John D., CEO'), and round-number stats ('10x', '10,000+') with no source.",
+    "conversionPath": "Lots of 'Get Started' buttons, but on the pricing page they're href=\"#\" and lead nowhere; 'Watch Demo' points at a missing anchor; the email form has no label and no visible outcome."
+  },
+  "sections": {
+    "motion": { "summary": "Motion is decoration, not feedback: three CTAs pulse forever, and 8 content blocks are invisible until scrolled into view, then fade in over 1.2 s. Neither respects prefers-reduced-motion, so motion-sensitive visitors get the full show. Scroll-gated content also hides from print, screenshots and some crawlers." },
+    "themes": { "summary": "A dark-only theme: near-black ground with translucent white cards and one indigo-to-pink gradient doing every job (brand, emphasis, buttons, glow). It looks modern and reads as generic. Small grey footer text fails contrast (3.99:1 at 11px). There's no light theme, which is fine for this style, but 'dark + gradient' is itself one of the most common AI defaults." },
+    "responsive": { "summary": "Stacks to one column under 760px, but the logo strip is a fixed 640px wide, so the 390px mobile layout scrolls 30px sideways. Footer links are 14px-tall tap targets." },
+    "accessibility": { "summary": "Lighthouse 72-76. The hero image has no alt text, the email field has no label (placeholder only), there's no <main> landmark, footer text fails contrast, and footer links are too small to tap." },
+    "performance": { "summary": "Light page, Lighthouse 87-88, LCP 2.9 s in the lab. Cost drivers: a render-blocking Google Fonts @import inside the stylesheet and a 404 for the hero image." },
+    "security": { "summary": "This demo was served locally over plain HTTP, so the transport and header rows describe a dev server, not a production deploy. One real code issue: an outbound target=\"_blank\" link without rel=\"noopener\". No secrets in client code; Google Fonts is the only third party." },
+    "seo": { "summary": "Neither page has a meta description, the pricing page title is just 'Pricing', and there's no canonical, robots.txt or sitemap (expected for a local demo). The outbound 'Status' link returns 404." }
+  },
+  "pages": [
+    { "slug": "index", "url": "http://localhost:4173", "title": "Homepage", "verdict": "The median AI landing page, with a broken product shot and a JavaScript error under the glow.",
+      "scores": { "aiDesign": 1, "pitch": 2, "aiCopy": 2, "conversion": 3 } },
+    { "slug": "pricing.html", "url": "http://localhost:4173/pricing.html", "title": "Pricing", "verdict": "Real prices, vague plans, and buttons that go nowhere.",
+      "scores": { "pitch": 3, "conversion": 1 } }
+  ],
+  "findings": [
+    {
+      "page": "index", "category": "aiDesign", "severity": "roast", "confidence": "certain",
+      "title": "The full first-order AI landing-page kit",
+      "evidence": "Purple-to-pink radial glow behind a centred headline; one gradient word ('AI-Powered'); a ✨ sparkle pill above the title; emoji icons (🚀 ⚡ 🔒); glass cards (backdrop-blur); indigo-violet glowing buttons; Inter everywhere. The design scanner flags 15 distinct tells (C1, C6, T1, I2, K3, K5, SD5, …).",
+      "fix": "Pick a real art direction tied to the product. Start by showing the product UI large in the hero and drop the glow, gradient word, sparkle pill and emoji.",
+      "source": "avoid-ai-design (detect.mjs + catalogue), hallmark, frontend-design, redesign-existing-projects",
+      "targets": [
+        { "viewport": "desktop", "text": "AI-Powered", "note": "gradient word" },
+        { "viewport": "desktop", "text": "Introducing Synthora 2.0", "note": "sparkle pill" },
+        { "viewport": "desktop", "selector": "#features .card:nth-of-type(1) .icon", "shape": "circle", "note": "emoji icons" }
+      ]
+    },
+    {
+      "page": "index", "category": "pitch", "severity": "roast", "confidence": "certain",
+      "title": "The hero never says what it does",
+      "evidence": "'Supercharge Your Workflow with AI-Powered Automation' + 'Unlock the power of seamless automation': no job, no user, no outcome, no number. After reading the whole page you still don't know what gets automated.",
+      "fix": "One sentence: what it automates, for whom, with what result, e.g. 'Turns support emails into Jira tickets for 5-50 person teams, in under a minute.'",
+      "source": "copywriting, product-marketing, cro",
+      "targets": [{ "viewport": "desktop", "text": "Supercharge Your Workflow", "note": "what does it do?" }]
+    },
+    {
+      "page": "index", "category": "aiCopy", "severity": "roast", "confidence": "certain",
+      "title": "Stock AI copy, end to end",
+      "evidence": "Detector hits: 'seamless', 'game-changer', 'truly', the 'isn't just a tool — it's' frame, em-dash pivots; plus 'unlock the power', 'work smarter, not harder', 'take your productivity to the next level', 'blazing-fast', 'bank-level security'.",
+      "fix": "Replace every abstract benefit with a concrete one (a task, a time saved, an integration name).",
+      "source": "ai-writing-detector, avoid-ai-writing, humanizer",
+      "targets": [{ "viewport": "desktop", "text": "Unlock the power of seamless automation", "note": "stock phrases" }]
+    },
+    {
+      "page": "index", "category": "imagery", "type": "bug", "severity": "roast", "confidence": "certain",
+      "title": "The product screenshot is broken",
+      "evidence": "<img class=\"shot\" src=\"assets/dashboard.png\"> returns 404 and has no alt text. Where the product should be, there's an empty bordered frame with a broken-image icon.",
+      "fix": "Ship the image (and an alt describing it). Better: a real, annotated product screenshot or a 10-second loop of the product working.",
+      "source": "bugs.json, accessibility",
+      "targets": [{ "viewport": "desktop", "selector": "img.shot", "shape": "circle", "note": "404" }]
+    },
+    {
+      "page": "index", "category": "conversion", "type": "bug", "severity": "fix", "confidence": "certain",
+      "title": "'Watch Demo', 'Docs' and the footer go nowhere",
+      "evidence": "'Watch Demo' → #demo and 'Docs' → #features-overview (neither exists); About, Careers, Press, Privacy, Terms and Blog are href=\"#\"; 'Status' opens https://example.com/status, which returns 404.",
+      "fix": "Link to real pages or remove the links. A demo link that does nothing is worse than no demo link.",
+      "source": "bugs.json, link checker",
+      "targets": [{ "viewport": "desktop", "text": "Watch Demo", "note": "goes nowhere" }]
+    },
+    {
+      "page": "index", "category": "backend", "type": "bug", "severity": "fix", "confidence": "certain",
+      "title": "JavaScript error on every load",
+      "evidence": "Uncaught ReferenceError: initAnalytics is not defined (inline script at the end of the page). Analytics never starts, so nothing is measured.",
+      "fix": "Remove the leftover call or include the analytics script; add a console-error check to CI.",
+      "source": "bugs.json (pageerror)"
+    },
+    {
+      "page": "index", "category": "responsive", "type": "bug", "severity": "fix", "confidence": "certain",
+      "title": "Logo strip pushes the mobile page sideways",
+      "evidence": "At 390px the page is 30px wider than the screen. Culprit: .logos has a fixed width of 640px (right edge at 664px).",
+      "fix": "width: 100%; flex-wrap: wrap (or an auto-scrolling marquee that stays inside the viewport).",
+      "source": "responsive.json",
+      "targets": [{ "viewport": "mobile", "selector": ".logos", "note": "640px on a 390px screen" }]
+    },
+    {
+      "page": "index", "category": "motion", "severity": "fix", "confidence": "certain",
+      "title": "Buttons that pulse forever",
+      "evidence": "3 infinite 'pulse' animations (2 s loop) on the primary CTAs. They keep running with prefers-reduced-motion: reduce (3 running → 3 running).",
+      "fix": "Remove the loop; use a single subtle hover/press state, wrapped in @media (prefers-reduced-motion: no-preference).",
+      "source": "motion.json, reduced-motion check, impeccable (animate)",
+      "targets": [{ "viewport": "desktop", "text": "Start Free Trial", "note": "infinite pulse" }]
+    },
+    {
+      "page": "index", "category": "motion", "severity": "fix", "confidence": "certain",
+      "title": "Content hidden until you scroll",
+      "evidence": "8 blocks (feature cards, stats, testimonials, CTA) sit at opacity 0 below the fold and fade in over 1.2 s when scrolled into view.",
+      "fix": "Render content visible by default. If you keep a reveal, make it short (≤ 300 ms), small (no 40px slide) and skip it under reduced motion.",
+      "source": "motion.json (scroll reveal), design-taste-frontend",
+      "targets": [{ "viewport": "desktop", "text": "Lightning Fast", "note": "opacity 0 until scrolled" }]
+    },
+    {
+      "page": "index", "category": "pitch", "severity": "fix", "confidence": "certain",
+      "title": "Placeholder proof",
+      "evidence": "Logo strip: ACME, GLOBEX, INITECH, UMBRELLA, HOOLI (fictional companies from TV). Testimonials signed 'John D., CEO', 'Sarah K., Product Manager', 'Mike R., Founder' with no company or photo. '10,000+ happy teams' has no source.",
+      "fix": "Use real, named customers with permission, or remove the section until you have them.",
+      "source": "marketing-psychology (social proof), cro",
+      "targets": [
+        { "viewport": "desktop", "text": "GLOBEX", "note": "placeholder logos" },
+        { "viewport": "desktop", "text": "John D., CEO", "note": "anonymous" }
+      ]
+    },
+    {
+      "page": "index", "category": "accessibility", "severity": "fix", "confidence": "certain",
+      "title": "Unlabelled email field, unreadable footer",
+      "evidence": "The newsletter input has only a placeholder ('Enter your email'), no label. Footer text is #6b7089 on #0b0b1a at 11px: 3.99:1 (needs 4.5:1). Footer links are 14px tall. No <main> landmark.",
+      "fix": "Add a visually-hidden label, raise footer text to 13px and #8b90a8+, pad the links to 24px+, and wrap content in <main>.",
+      "source": "accessibility, scan.lighthouse",
+      "targets": [{ "viewport": "desktop", "selector": ".newsletter input", "note": "no label" }]
+    },
+    {
+      "page": "index", "category": "layout", "severity": "fix", "confidence": "certain",
+      "title": "The cookie-cutter section order",
+      "evidence": "Hero → logo strip → 3 equal cards → stat strip → 3 testimonials → gradient CTA box → footer, all centred. Nothing in the layout is specific to this product.",
+      "fix": "Structure the page around the product's workflow (before/after, a real example, then pricing).",
+      "source": "avoid-ai-design (L9), redesign-existing-projects",
+      "targets": [{ "viewport": "desktop", "text": "Everything you need to", "note": "centred + 3 cards" }]
+    },
+    {
+      "page": "pricing.html", "category": "conversion", "type": "bug", "severity": "roast", "confidence": "certain",
+      "title": "The pricing buttons don't go anywhere",
+      "evidence": "'Get Started' on Starter and Pro, 'Contact Sales' on Enterprise, and the nav 'Get Started' are all href=\"#\". The one page built to convert can't.",
+      "fix": "Wire each tier to sign-up (with the plan preselected) and Enterprise to a contact form or calendar.",
+      "source": "cro, bugs.json (placeholder links)",
+      "targets": [{ "viewport": "desktop", "selector": ".tier.pop .btn", "note": "href=\"#\"" }]
+    },
+    {
+      "page": "pricing.html", "category": "pitch", "severity": "fix", "confidence": "certain",
+      "title": "Plans priced in units nobody can picture",
+      "evidence": "'Up to 3 seamless workflows', 'Basic AI insights', 'Advanced AI-powered insights'. What's a workflow? What's an insight? Why is Pro worth 2.6× Starter?",
+      "fix": "Price on something concrete (runs/month, seats, integrations) and show one example of what fits in each plan.",
+      "source": "cro, copywriting",
+      "targets": [{ "viewport": "desktop", "text": "Up to 3 seamless workflows", "note": "what's a workflow?" }]
+    },
+    {
+      "page": "pricing.html", "category": "aiDesign", "severity": "nit", "confidence": "certain",
+      "title": "Ornament instead of hierarchy",
+      "evidence": "'⭐ Most Popular' in the plan name, ✨ before every list item, a purple glow around the middle card.",
+      "fix": "One quiet 'Most popular' label and a stronger border is enough.",
+      "source": "avoid-ai-design (I3, C5)",
+      "targets": [{ "viewport": "desktop", "text": "Most Popular", "shape": "circle", "note": "⭐ ✨" }]
+    },
+    {
+      "page": null, "category": "seo", "severity": "fix", "confidence": "certain",
+      "title": "No meta descriptions; pricing title is just 'Pricing'",
+      "evidence": "Neither page has a meta description (Lighthouse SEO 82-90). The pricing <title> is 'Pricing', so search results and shared links say nothing about the product.",
+      "fix": "Write a unique description per page and title the pricing page 'Synthora pricing: plans from $19/month'.",
+      "source": "seo-audit"
+    },
+    {
+      "page": null, "category": "typography", "severity": "nit", "confidence": "certain",
+      "title": "One anonymous typeface doing everything",
+      "evidence": "Inter is 99% of all text: headings at 800 weight with -1.5px tracking, body in grey #9aa0b8, footer at 11px.",
+      "fix": "Give headings a face with character, or at least a distinct weight and scale. Raise small text to 13px+.",
+      "source": "impeccable (typeset), design-taste-frontend"
+    },
+    {
+      "page": null, "category": "security", "severity": "nit", "confidence": "certain",
+      "title": "Outbound link opened without noopener",
+      "evidence": "The footer 'Status' link uses target=\"_blank\" without rel=\"noopener\".",
+      "fix": "Add rel=\"noopener noreferrer\".",
+      "source": "web-quality-audit"
+    }
+  ]
+}
