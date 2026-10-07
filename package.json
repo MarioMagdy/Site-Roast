@@ -1,0 +1,19 @@
+{
+  "name": "site-roast",
+  "private": true,
+  "description": "Agent workflow that roasts a website page-by-page: AI-slop tells, design quality, readability, and whether it actually pitches the product.",
+  "scripts": {
+    "capture": "node scripts/capture.mjs",
+    "crawl": "node scripts/crawl.mjs",
+    "scan": "node scripts/scan.mjs",
+    "report": "node scripts/report.mjs",
+    "sync": "node scripts/sync.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

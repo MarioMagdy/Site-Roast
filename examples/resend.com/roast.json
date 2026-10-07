@@ -1,0 +1,169 @@
+{
+  "generatedAt": "2026-10-07T17:00:00Z",
+  "site": {
+    "url": "https://resend.com",
+    "name": "Resend",
+    "product": "Email API + marketing email platform",
+    "audience": "developers at startups and scale-ups",
+    "verdict": "Resend is one of the few dev-tool sites where the AI scanners trip and a human still wins. The CSS bundle has every 2024 starter-kit move (Inter, gradient text, backdrop blur), but the page itself has a point of view: a serif display face, a monochrome cube, and a working code sample above the fold. The weak spot is the pitch. \"Email for developers\" names the buyer and stops there. The only outcome on offer is \"reach humans instead of spam folders\", every email API says that, and there's no number behind it.",
+    "scores": { "aiCopy": 8, "aiDesign": 7, "visual": 9, "readability": 7, "pitch": 6, "conversion": 8, "technical": 7 },
+    "topFixes": [
+      "Back up the deliverability promise with a number (inbox placement, time-to-inbox, or a named customer result) in the hero or right under it.",
+      "Say why Resend beats SendGrid/Postmark in one line above the fold. Today the differentiator (DX, React Email) only shows up three sections down.",
+      "Remove the hidden \"Recommended\" badge text from all four pricing tiers. Screen readers and text crawlers read every plan as recommended.",
+      "Give the Forward event page a real H1/H2 structure. It has no semantic headings at all."
+    ],
+    "strengths": [
+      "A working code sample sits right under the hero: the product is shown, not described.",
+      "The typography has real art direction (serif display + grotesk). It doesn't look like a template.",
+      "Pricing has a volume slider and per-1,000 overage rates in plain sight, so there's no 'contact sales' wall below enterprise.",
+      "Copy is clean: the deterministic writing scan scored the homepage 3 (minimal) with only one chatbot phrase."
+    ]
+  },
+  "pages": [
+    {
+      "slug": "index",
+      "url": "https://resend.com",
+      "title": "Homepage",
+      "verdict": "Looks expensive and sounds human, but the hero sells a category instead of a reason to switch.",
+      "scores": { "aiCopy": 8, "aiDesign": 7, "visual": 9, "readability": 7, "pitch": 6, "conversion": 8, "technical": 8 },
+      "findings": [
+        {
+          "lens": "pitch",
+          "severity": "roast",
+          "title": "Hero names the audience, not the advantage",
+          "evidence": "H1 \"Email for developers\" + \"The best way to reach humans instead of spam folders.\" Deliverability is table stakes for every competitor, and \"the best way\" is an unbacked superlative.",
+          "fix": "Keep the H1 and swap the subhead for a concrete outcome or proof, e.g. a placement rate, time-to-first-send, or a recognisable customer.",
+          "source": "copywriting, product-marketing",
+          "confidence": "certain"
+        },
+        {
+          "lens": "pitch",
+          "severity": "fix",
+          "title": "The real differentiator is buried",
+          "evidence": "\"Develop emails using React\" (the thing competitors can't claim) is the 9th H2 on the page, after Test mode, Webhooks, Editor, Contacts, and Analytics.",
+          "fix": "Promote React Email + DX into the hero or the first section.",
+          "source": "product-marketing, marketing-psychology",
+          "confidence": "certain"
+        },
+        {
+          "lens": "aiDesign",
+          "severity": "nit",
+          "title": "Starter-kit tells in the stylesheet, mostly not on screen",
+          "evidence": "Scanner flags Inter (body + buttons), gradient text, backdrop-blur, and an indigo gradient in the shipped CSS. On the rendered fold only Inter and a faint gradient pill border on the event badge are visible. The serif H1 and the monochrome palette override the default look.",
+          "fix": "Optional. Swapping Inter for the brand grotesk (ABC Favorit, already used for H2s) on body copy would remove the last generic layer.",
+          "source": "avoid-ai-design (detect.mjs), hallmark",
+          "confidence": "likely"
+        },
+        {
+          "lens": "aiCopy",
+          "severity": "nit",
+          "title": "One chatbot phrase and two stock verbs",
+          "evidence": "\"feel free to reach out\" (flagged critical as a chatbot phrase), \"Showcase your logo and company branding with BIMI\".",
+          "fix": "\"Email us at …\" / \"Show your logo in inboxes with BIMI\".",
+          "source": "ai-writing-detector, humanizer",
+          "confidence": "certain"
+        },
+        {
+          "lens": "readability",
+          "severity": "fix",
+          "title": "Long-scroll feature list with dense prose",
+          "evidence": "Flesch 46, 19 sentences over 30 words, 2,100+ words on the homepage. Twelve H2 sections, each with a paragraph.",
+          "fix": "Cut each feature section to a headline + one line + visual; link to the feature page for the rest.",
+          "source": "copy-editing, scan.readability",
+          "confidence": "certain"
+        },
+        {
+          "lens": "visual",
+          "severity": "nit",
+          "title": "Secondary CTA nearly disappears",
+          "evidence": "\"Documentation\" is grey text with no border next to the filled \"Get started\". It reads as disabled on mobile.",
+          "fix": "Give it a ghost border or a higher-contrast text colour.",
+          "source": "impeccable (audit)",
+          "confidence": "certain"
+        },
+        {
+          "lens": "technical",
+          "severity": "fix",
+          "title": "Slow first load",
+          "evidence": "12.5 s to network-idle on the first visit (3.2-3.5 s on later pages), mostly from the 3D hero asset.",
+          "fix": "Lazy-load the cube after first paint and serve a static poster image first.",
+          "source": "seo-audit, meta.json",
+          "confidence": "likely"
+        }
+      ]
+    },
+    {
+      "slug": "pricing",
+      "url": "https://resend.com/pricing",
+      "title": "Pricing",
+      "verdict": "Pricing done properly: transparent, interactive, honest about overages. Two markup bugs let it down.",
+      "scores": { "aiCopy": 9, "aiDesign": 7, "visual": 8, "readability": 7, "pitch": 7, "conversion": 8, "technical": 6 },
+      "findings": [
+        {
+          "lens": "technical",
+          "severity": "fix",
+          "title": "Every tier is secretly \"Recommended\"",
+          "evidence": "Headings read \"Free Recommended\", \"Pro Recommended\", \"Scale Recommended\", \"Custom Recommended\". The badge is hidden visually but present in the text, so screen readers and AI crawlers see four recommended plans.",
+          "fix": "Render the badge only on the recommended tier, or aria-hide the inactive ones.",
+          "source": "web-design-guidelines, ai-seo",
+          "confidence": "likely"
+        },
+        {
+          "lens": "conversion",
+          "severity": "fix",
+          "title": "Four identical \"Get started\" buttons",
+          "evidence": "Free, Pro, and Scale all say \"Get started\". There's no visual push toward the plan Resend actually wants you on.",
+          "fix": "Highlight one tier and label CTAs by outcome (\"Start free\", \"Go Pro\").",
+          "source": "cro, marketing-psychology",
+          "confidence": "certain"
+        },
+        {
+          "lens": "conversion",
+          "severity": "nit",
+          "title": "Odd feature-list entry",
+          "evidence": "\"Single Sign-On\" is listed under Free and Pro, but the page also sells SSO as a $150/mo add-on.",
+          "fix": "Show it as a struck-through or 'add-on' row so the list doesn't contradict the add-ons section.",
+          "source": "cro",
+          "confidence": "likely"
+        }
+      ]
+    },
+    {
+      "slug": "forward",
+      "url": "https://resend.com/forward",
+      "title": "Resend Forward (event)",
+      "verdict": "Loud, confident event page. It's the one place on the site that drifts toward the AI-template look.",
+      "scores": { "aiCopy": 9, "aiDesign": 5, "visual": 7, "readability": 7, "conversion": 8, "technical": 4 },
+      "findings": [
+        {
+          "lens": "aiDesign",
+          "severity": "fix",
+          "title": "Blue radial-glow hero + tracked mono caps",
+          "evidence": "Full-bleed blurred blue gradient, condensed all-caps headline, and letter-spaced monospace meta lines (\"OCT 21, 2026\", \"SFJAZZ CENTER\"). This is the 'tasteful AI' event-page cluster from the avoid-ai-design catalogue (SD4).",
+          "fix": "Bring in the main site's art direction (serif, monochrome, cube) so the event feels like Resend, not a generic conference template.",
+          "source": "avoid-ai-design, frontend-design",
+          "confidence": "certain"
+        },
+        {
+          "lens": "technical",
+          "severity": "roast",
+          "title": "No semantic headings at all",
+          "evidence": "Zero visible H1/H2/H3 elements. \"AN EVENT FOR BUILDERS\" is styled text, and the meta description is just the title.",
+          "fix": "Make the headline an H1 and section labels (Speakers, Agenda, FAQ) H2s. Write a real meta description.",
+          "source": "seo-audit, web-design-guidelines",
+          "confidence": "certain"
+        },
+        {
+          "lens": "readability",
+          "severity": "nit",
+          "title": "Everything is shouting",
+          "evidence": "Speaker names, roles, and stage labels are all uppercase (\"VP OF MARKETING AND COMMUNITY, LARAVEL\"), which slows scanning in a 20+ name list.",
+          "fix": "Use sentence case for roles, and keep caps for names or stage labels only.",
+          "source": "impeccable (typeset)",
+          "confidence": "certain"
+        }
+      ]
+    }
+  ]
+}

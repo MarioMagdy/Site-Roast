@@ -1,0 +1,32 @@
+# Weekly: pull the latest version of every vendored skill and open a PR if anything changed,
+# so upstream improvements land after review instead of silently.
+name: sync-skills
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/sync.mjs
+      - run: npm ci || npm install
+      - run: npm test
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-skills
+          title: "chore: sync upstream skills"
+          commit-message: "chore: sync upstream skills"
+          body: |
+            Automated weekly `npm run sync`. Review the diffs under `.claude/skills/` (especially
+            SKILL.md changes) before merging. `skills.lock.json` shows the new upstream commits.
+          labels: skills-sync

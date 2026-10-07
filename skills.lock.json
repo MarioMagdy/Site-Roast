@@ -1,0 +1,107 @@
+{
+  "ai-writing-detector": {
+    "repo": "conorbronsdon/avoid-ai-writing",
+    "path": "skills/ai-writing-detector",
+    "sha": "2e1ec15c96331f15e8f2e90f37cd80983bdc3cbc",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "avoid-ai-writing": {
+    "repo": "conorbronsdon/avoid-ai-writing",
+    "path": "skills/avoid-ai-writing",
+    "sha": "2e1ec15c96331f15e8f2e90f37cd80983bdc3cbc",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "humanizer": {
+    "repo": "blader/humanizer",
+    "path": ".",
+    "sha": "225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "avoid-ai-design": {
+    "repo": "funboy322/avoid-ai-design",
+    "path": ".",
+    "sha": "2b7c71836b06cdf6b3d73265b56490c1b75ad5aa",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "hallmark": {
+    "repo": "nutlope/hallmark",
+    "path": "skills/hallmark",
+    "sha": "13ac0ec7e148655948100b6396439e481361d690",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "impeccable": {
+    "repo": "pbakaus/impeccable",
+    "path": ".claude/skills/impeccable",
+    "sha": "9ffc1eafe5f2788c2fcc1e400373922255cb156a",
+    "license": "Apache-2.0",
+    "synced": "2026-10-07"
+  },
+  "web-design-guidelines": {
+    "repo": "vercel-labs/agent-skills",
+    "path": "skills/web-design-guidelines",
+    "sha": "063bee94c3f4df8453406c830b0a7df0f2860278",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "frontend-design": {
+    "repo": "anthropics/skills",
+    "path": "skills/frontend-design",
+    "sha": "683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "license": "Apache-2.0",
+    "synced": "2026-10-07"
+  },
+  "product-marketing": {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/product-marketing",
+    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "cro": {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/cro",
+    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "copywriting": {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/copywriting",
+    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "copy-editing": {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/copy-editing",
+    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "marketing-psychology": {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/marketing-psychology",
+    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "seo-audit": {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/seo-audit",
+    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  },
+  "ai-seo": {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/ai-seo",
+    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "license": "MIT",
+    "synced": "2026-10-07"
+  }
+}

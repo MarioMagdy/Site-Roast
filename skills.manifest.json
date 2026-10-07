@@ -1,0 +1,142 @@
+{
+  "_comment": "Upstream skills Site Roast reuses instead of rewriting. `npm run sync` copies each `path` into .claude/skills/<name>/ and pins the resolved commit in skills.lock.json. Set `ref` to a tag/sha to freeze one; default tracks the branch head.",
+  "skills": [
+    {
+      "name": "ai-writing-detector",
+      "repo": "conorbronsdon/avoid-ai-writing",
+      "ref": "HEAD",
+      "path": "skills/ai-writing-detector",
+      "license": "MIT",
+      "lens": "ai-copy",
+      "why": "Deterministic AI-writing scanner (scripts/detect.js) - scores page copy, context=marketing."
+    },
+    {
+      "name": "avoid-ai-writing",
+      "repo": "conorbronsdon/avoid-ai-writing",
+      "ref": "HEAD",
+      "path": "skills/avoid-ai-writing",
+      "license": "MIT",
+      "lens": "ai-copy",
+      "why": "Canonical rulebook the detector defers to (false-positive cautions, context exceptions)."
+    },
+    {
+      "name": "humanizer",
+      "repo": "blader/humanizer",
+      "ref": "HEAD",
+      "path": ".",
+      "include": ["SKILL.md", "LICENSE", "README.md"],
+      "license": "MIT",
+      "lens": "ai-copy",
+      "why": "Wikipedia 'Signs of AI writing' catalogue - model-judged second opinion on copy tells."
+    },
+    {
+      "name": "avoid-ai-design",
+      "repo": "funboy322/avoid-ai-design",
+      "ref": "HEAD",
+      "path": ".",
+      "include": ["SKILL.md", "LICENSE", "references", "scripts"],
+      "license": "MIT",
+      "lens": "ai-design",
+      "why": "AI design-tells catalogue (1st + 2nd order) and zero-dep scanner scripts/detect.mjs for code-certain tells."
+    },
+    {
+      "name": "hallmark",
+      "repo": "nutlope/hallmark",
+      "ref": "HEAD",
+      "path": "skills/hallmark",
+      "license": "MIT",
+      "lens": "ai-design",
+      "why": "57 slop-test gates - used as a checklist against screenshots."
+    },
+    {
+      "name": "impeccable",
+      "repo": "pbakaus/impeccable",
+      "ref": "HEAD",
+      "path": ".claude/skills/impeccable",
+      "license": "Apache-2.0",
+      "lens": "design-quality",
+      "why": "audit / critique modes: hierarchy, typography, spacing, colour, motion, UX copy, a11y."
+    },
+    {
+      "name": "web-design-guidelines",
+      "repo": "vercel-labs/agent-skills",
+      "ref": "HEAD",
+      "path": "skills/web-design-guidelines",
+      "license": "MIT",
+      "lens": "design-quality",
+      "why": "Vercel Web Interface Guidelines compliance review (fetches the live guideline list)."
+    },
+    {
+      "name": "frontend-design",
+      "repo": "anthropics/skills",
+      "ref": "HEAD",
+      "path": "skills/frontend-design",
+      "license": "Apache-2.0",
+      "lens": "ai-design",
+      "why": "Anthropic's own list of distributional-default aesthetics - the clusters to flag."
+    },
+    {
+      "name": "product-marketing",
+      "repo": "coreyhaines31/marketingskills",
+      "ref": "HEAD",
+      "path": "skills/product-marketing",
+      "license": "MIT",
+      "lens": "pitch",
+      "why": "Foundation: infer product, audience, positioning before judging the pitch."
+    },
+    {
+      "name": "cro",
+      "repo": "coreyhaines31/marketingskills",
+      "ref": "HEAD",
+      "path": "skills/cro",
+      "license": "MIT",
+      "lens": "pitch",
+      "why": "Page CRO framework: value prop clarity, CTA, objections, social proof, friction."
+    },
+    {
+      "name": "copywriting",
+      "repo": "coreyhaines31/marketingskills",
+      "ref": "HEAD",
+      "path": "skills/copywriting",
+      "license": "MIT",
+      "lens": "pitch",
+      "why": "Does the copy sell the value or just describe features?"
+    },
+    {
+      "name": "copy-editing",
+      "repo": "coreyhaines31/marketingskills",
+      "ref": "HEAD",
+      "path": "skills/copy-editing",
+      "license": "MIT",
+      "lens": "readability",
+      "why": "Line-level clarity, jargon, scannability sweeps."
+    },
+    {
+      "name": "marketing-psychology",
+      "repo": "coreyhaines31/marketingskills",
+      "ref": "HEAD",
+      "path": "skills/marketing-psychology",
+      "license": "MIT",
+      "lens": "pitch",
+      "why": "Persuasion principles used/missed (anchoring, proof, loss aversion...)."
+    },
+    {
+      "name": "seo-audit",
+      "repo": "coreyhaines31/marketingskills",
+      "ref": "HEAD",
+      "path": "skills/seo-audit",
+      "license": "MIT",
+      "lens": "technical",
+      "why": "On-page SEO basics: titles, meta, headings, indexability."
+    },
+    {
+      "name": "ai-seo",
+      "repo": "coreyhaines31/marketingskills",
+      "ref": "HEAD",
+      "path": "skills/ai-seo",
+      "license": "MIT",
+      "lens": "technical",
+      "why": "Is the site legible to LLM answer engines (citability, structure, llms.txt)?"
+    }
+  ]
+}
