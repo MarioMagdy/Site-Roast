@@ -2,155 +2,155 @@
   "ai-writing-detector": {
     "repo": "conorbronsdon/avoid-ai-writing",
     "path": "skills/ai-writing-detector",
-    "sha": "2e1ec15c96331f15e8f2e90f37cd80983bdc3cbc",
+    "sha": "013d1db6b43288c08fcba422fcda3b981ec93dd9",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "avoid-ai-writing": {
     "repo": "conorbronsdon/avoid-ai-writing",
     "path": "skills/avoid-ai-writing",
-    "sha": "2e1ec15c96331f15e8f2e90f37cd80983bdc3cbc",
+    "sha": "013d1db6b43288c08fcba422fcda3b981ec93dd9",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "humanizer": {
     "repo": "blader/humanizer",
     "path": ".",
-    "sha": "225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8",
+    "sha": "8c307f367c91bd974002f10f2be2965d642c13df",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "avoid-ai-design": {
     "repo": "funboy322/avoid-ai-design",
     "path": ".",
     "sha": "2b7c71836b06cdf6b3d73265b56490c1b75ad5aa",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "hallmark": {
     "repo": "nutlope/hallmark",
     "path": "skills/hallmark",
     "sha": "13ac0ec7e148655948100b6396439e481361d690",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "impeccable": {
     "repo": "pbakaus/impeccable",
     "path": ".claude/skills/impeccable",
-    "sha": "9ffc1eafe5f2788c2fcc1e400373922255cb156a",
+    "sha": "0665bd812ae0908fcab17b96fd4f840defb882d9",
     "license": "Apache-2.0",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "web-design-guidelines": {
     "repo": "vercel-labs/agent-skills",
     "path": "skills/web-design-guidelines",
     "sha": "063bee94c3f4df8453406c830b0a7df0f2860278",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "frontend-design": {
     "repo": "anthropics/skills",
     "path": "skills/frontend-design",
-    "sha": "683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "sha": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
     "license": "Apache-2.0",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "product-marketing": {
     "repo": "coreyhaines31/marketingskills",
     "path": "skills/product-marketing",
-    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "sha": "365b412152b9542499ca1439426f7fc3cc92bb65",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "cro": {
     "repo": "coreyhaines31/marketingskills",
     "path": "skills/cro",
-    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "sha": "365b412152b9542499ca1439426f7fc3cc92bb65",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "copywriting": {
     "repo": "coreyhaines31/marketingskills",
     "path": "skills/copywriting",
-    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "sha": "365b412152b9542499ca1439426f7fc3cc92bb65",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "copy-editing": {
     "repo": "coreyhaines31/marketingskills",
     "path": "skills/copy-editing",
-    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "sha": "365b412152b9542499ca1439426f7fc3cc92bb65",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "marketing-psychology": {
     "repo": "coreyhaines31/marketingskills",
     "path": "skills/marketing-psychology",
-    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "sha": "365b412152b9542499ca1439426f7fc3cc92bb65",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "seo-audit": {
     "repo": "coreyhaines31/marketingskills",
     "path": "skills/seo-audit",
-    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "sha": "365b412152b9542499ca1439426f7fc3cc92bb65",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "ai-seo": {
     "repo": "coreyhaines31/marketingskills",
     "path": "skills/ai-seo",
-    "sha": "5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80",
+    "sha": "365b412152b9542499ca1439426f7fc3cc92bb65",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "design-taste-frontend": {
     "repo": "Leonxlnx/taste-skill",
     "path": "skills/taste-skill",
-    "sha": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
+    "sha": "b9ca2fd8047f4c72d7da90ebc1c1203e57c72cd2",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "redesign-existing-projects": {
     "repo": "Leonxlnx/taste-skill",
     "path": "skills/redesign-skill",
-    "sha": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
+    "sha": "b9ca2fd8047f4c72d7da90ebc1c1203e57c72cd2",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "web-quality-audit": {
     "repo": "addyosmani/web-quality-skills",
     "path": "skills/web-quality-audit",
     "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "accessibility": {
     "repo": "addyosmani/web-quality-skills",
     "path": "skills/accessibility",
     "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "performance": {
     "repo": "addyosmani/web-quality-skills",
     "path": "skills/performance",
     "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "core-web-vitals": {
     "repo": "addyosmani/web-quality-skills",
     "path": "skills/core-web-vitals",
     "sha": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   },
   "pre-launch-audit": {
     "repo": "bzsasson/pre-launch-audit-skill",
     "path": "skills/pre-launch-audit",
     "sha": "f9ccf065c42214ae796edd480ac82c30cd605c53",
     "license": "MIT",
-    "synced": "2026-10-07"
+    "synced": "2026-10-19"
   }
 }

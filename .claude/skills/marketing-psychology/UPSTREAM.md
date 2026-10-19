@@ -1,5 +1,5 @@
 Vendored by Site Roast. Do not edit here; change upstream or skills.manifest.json, then `npm run sync`.
 
-- source: https://github.com/coreyhaines31/marketingskills/tree/5e721d73ac85be8ba917d6a9ca9cb5bc98f02b80/skills/marketing-psychology
+- source: https://github.com/coreyhaines31/marketingskills/tree/365b412152b9542499ca1439426f7fc3cc92bb65/skills/marketing-psychology
 - license: MIT
 - lens: pitch
